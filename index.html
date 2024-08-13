@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bingo Indira</title>
- <meta name="theme-color" content="#5a30e5">
+    <meta name="theme-color" content="#5a30e5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         body, html {
             margin: 0;
@@ -19,6 +22,16 @@
             height: 100%;
             border: none;
             display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        @media screen and (display-mode: standalone) {
+            #webApp_container {
+                height: 100vh;
+            }
         }
     </style>
 </head>
@@ -29,6 +42,49 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
         });
+
+        function isAndroid13() {
+            return /Android 13/i.test(navigator.userAgent);
+        }
+
+        function hideAddressBar() {
+            if (document.documentElement.scrollHeight > window.outerHeight + 10) {
+                setTimeout(function() {
+                    window.scrollTo(0, 1);
+                }, 0);
+            }
+        }
+
+        function handleOrientation() {
+            if (!isAndroid13()) {
+                hideAddressBar();
+            }
+            // Ajustar el tamaño del iframe
+            const iframe = document.getElementById('webApp_container');
+            iframe.style.height = window.innerHeight + 'px';
+        }
+
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if (isMobile()) {
+            window.addEventListener("load", handleOrientation);
+            window.addEventListener("resize", handleOrientation);
+            window.addEventListener("orientationchange", handleOrientation);
+
+            if (isAndroid13()) {
+                // Configuración específica para Android 13
+                document.body.style.height = '100vh';
+                const iframe = document.getElementById('webApp_container');
+                iframe.style.height = '100%';
+            }
+        }
+
+        // Verificar si la aplicación se está ejecutando en modo standalone
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.body.classList.add('standalone');
+        }
     </script>
 </body>
 </html>
