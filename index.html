@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Indira</title>
-    <meta name="theme-color" content="#5a30e5">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="theme-color" content="#5a30e5">
     <style>
         body, html {
             margin: 0;
@@ -21,11 +19,6 @@
             height: 100%;
             border: none;
             display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
         }
     </style>
 </head>
@@ -36,45 +29,6 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
         });
-
-        // Función para ocultar la barra de direcciones
-        function hideAddressBar() {
-            if(document.documentElement.scrollHeight > window.outerHeight + 10) {
-                setTimeout(function() {
-                    window.scrollTo(0, 1);
-                }, 0);
-            }
-        }
-
-        // Función para manejar la orientación
-        function handleOrientation() {
-            hideAddressBar();
-            // En Android, a veces es necesario un pequeño retraso
-            setTimeout(hideAddressBar, .05);
-        }
-
-        // Detectar si es un dispositivo móvil
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        if (isMobile()) {
-            // Ejecutar cuando la página se carga
-            window.addEventListener("load", handleOrientation);
-            
-            // Ejecutar cuando la ventana se redimensiona
-            window.addEventListener("resize", handleOrientation);
-            
-            // Ejecutar cuando cambia la orientación
-            window.addEventListener("orientationchange", handleOrientation);
-
-            // Para Android, intentar ocultar la barra de navegación
-            if (/Android/i.test(navigator.userAgent)) {
-                if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
-                    document.documentElement.style.height = '100vh';
-                }
-            }
-        }
     </script>
 </body>
 </html>
