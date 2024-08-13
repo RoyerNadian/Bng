@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Indira</title>
-    <meta name="theme-color" content="#5a30e5">
+ <meta name="theme-color" content="#5a30e5">
     <style>
         body, html {
             margin: 0;
@@ -20,66 +20,14 @@
             border: none;
             display: block;
         }
-        #menuBtn {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-            background: #5a30e5;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: #f1f1f1;
-            transition: 0.3s;
-            z-index: 999;
-        }
-        #sidebar.open {
-            left: 0;
-        }
-        #sidebar h2 {
-            padding: 20px;
-            margin: 0;
-            background: #5a30e5;
-            color: white;
-        }
-        #sidebar button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <button id="menuBtn">☰</button>
-    <div id="sidebar">
-        <h2>Bingo Indira</h2>
-        <button onclick="window.open('https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/tabla.html', '_blank')">Lineas&Bingos</button>
-    </div>
     <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec"></iframe>
     <script>
         // Cambiar el color de la barra de direcciones en dispositivos móviles
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
-        });
-
-        // Funcionalidad del sidebar
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
         });
     </script>
 </body>
