@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Indira</title>
-    <meta name="theme-color" content="#5a30e5">
+ <meta name="theme-color" content="#5a30e5">
     <style>
         body, html {
             margin: 0;
@@ -20,86 +20,14 @@
             border: none;
             display: block;
         }
-        #panel-button {
-            position: fixed;
-            right: 20px;
-            top: 20px;
-            z-index: 1000;
-            background-color: #5a30e5;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #side-panel {
-            position: fixed;
-            right: -300px;
-            top: 0;
-            width: 300px;
-            height: 100%;
-            background-color: white;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-            transition: right 0.3s ease;
-            z-index: 1001;
-        }
-        #side-panel.open {
-            right: 0;
-        }
-        #close-panel {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        #tabla-bingos-btn {
-            display: block;
-            width: 80%;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #5a30e5;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
     <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec"></iframe>
-    
-    <button id="panel-button">Abrir Panel</button>
-    
-    <div id="side-panel">
-        <button id="close-panel">&times;</button>
-        <button id="tabla-bingos-btn">Tabla y Bingos Anteriores</button>
-    </div>
-
     <script>
         // Cambiar el color de la barra de direcciones en dispositivos móviles
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
-        });
-
-        // Funcionalidad del panel lateral
-        const panelButton = document.getElementById('panel-button');
-        const sidePanel = document.getElementById('side-panel');
-        const closePanel = document.getElementById('close-panel');
-        const tablaBingosBtn = document.getElementById('tabla-bingos-btn');
-
-        panelButton.addEventListener('click', () => {
-            sidePanel.classList.add('open');
-        });
-
-        closePanel.addEventListener('click', () => {
-            sidePanel.classList.remove('open');
-        });
-
-        tablaBingosBtn.addEventListener('click', () => {
-            window.location.href = 'https://script.google.com/macros/s/AKfycbysalhDaQwFe0C8XhqIXgUq7CCChYvPnzD-RAVmCWTB_InwsggEY7F8k9HrEh4t92gQ/exec';
         });
     </script>
 </body>
