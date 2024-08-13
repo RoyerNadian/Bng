@@ -41,9 +41,15 @@
             text-decoration: none;
             font-size: 18px;
             color: #FFFFFF;
-            display: block;
+            display: flex;
+            align-items: center;
             transition: 0.2s;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sidebar a i {
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
         }
         .sidebar a:hover {
             background-color: rgba(124, 58, 237, 0.8);
@@ -52,22 +58,27 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 30px;
+            font-size: 24px;
             color: #FFFFFF;
-            text-decoration: none;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .sidebar .closebtn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         #menuBtn {
-            font-size: 30px;
+            font-size: 24px;
             cursor: pointer;
             position: fixed;
             top: 10px;
             left: 10px;
             z-index: 1001;
-            color: #8B5CF6;
-            background-color: #FFFFFF;
+            color: #FFFFFF;
+            background-color: #8B5CF6;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -76,9 +87,10 @@
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: 0.3s;
+            border: 2px solid #FFFFFF;
         }
         #menuBtn:hover {
-            background-color: #F3F4F6;
+            background-color: #7C3AED;
         }
         .sidebar-header {
             text-align: center;
@@ -114,28 +126,28 @@
     </style>
 </head>
 <body>
-    <div id="menuBtn" onclick="openNav()">&#62;</div>
+    <div id="menuBtn" onclick="openNav()"><i class="fas fa-chevron-right"></i></div>
     <div id="mySidebar" class="sidebar">
-        <button class="closebtn" onclick="closeNav()">&#60;</button>
+        <button class="closebtn" onclick="closeNav()"><i class="fas fa-chevron-left"></i></button>
         <div class="sidebar-header">
-            <img src="https://cdn-icons-png.flaticon.com/128/10040/10040785.png" alt="Bingo Indira Logo">
+            <img src="https://example.com/bingo-logo.png" alt="Bingo Indira Logo">
             <h2>Bingo Indira</h2>
         </div>
-        <a href="#" onclick="openIframe('https://script.google.com/macros/s/AKfycbysalhDaQwFe0C8XhqIXgUq7CCChYvPnzD-RAVmCWTB_InwsggEY7F8k9HrEh4t92gQ/exec')"><i class="fa-duotone fa-solid fa-border-top"></i> Tabla & Bingos</a>
-        <a href="#" onclick="goBack()"><i class="fas fa-form"></i> Formulario</a>
+        <a href="#" onclick="openIframe('https://script.google.com/macros/s/AKfycbysalhDaQwFe0C8XhqIXgUq7CCChYvPnzD-RAVmCWTB_InwsggEY7F8k9HrEh4t92gQ/exec')"><i class="fas fa-table"></i> Tabla & Bingos</a>
+        <a href="#" onclick="goBack()"><i class="fas fa-file-alt"></i> Formulario</a>
     </div>
     <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec"></iframe>
     <script>
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
             document.getElementById("menuBtn").style.left = "260px";
-            document.getElementById("menuBtn").innerHTML = "&#60;";
+            document.getElementById("menuBtn").innerHTML = '<i class="fas fa-chevron-left"></i>';
             document.getElementById("menuBtn").onclick = closeNav;
         }
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("menuBtn").style.left = "10px";
-            document.getElementById("menuBtn").innerHTML = "&#62;";
+            document.getElementById("menuBtn").innerHTML = '<i class="fas fa-chevron-right"></i>';
             document.getElementById("menuBtn").onclick = openNav;
         }
         function openIframe(url) {
