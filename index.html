@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Indira</title>
-    <meta name="theme-color" content="#fef26e">
+ <meta name="theme-color" content="#5a30e5">
     <style>
         body, html {
             margin: 0;
@@ -27,23 +27,8 @@
     <script>
         // Cambiar el color de la barra de direcciones en dispositivos móviles
         document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fef26e');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
         });
-
-        // Ocultar barra de búsqueda al cargar y al hacer scroll hacia abajo
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function(){
-            let st = window.pageYOffset || document.documentElement.scrollTop;
-            if (st > lastScrollTop){
-                // Deslizar hacia abajo, ocultar barra de direcciones
-                document.body.style.transform = 'translateY(-50px)';
-            } else {
-                // Deslizar hacia arriba, mostrar barra de direcciones
-                document.body.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = st <= 0 ? 0 : st; // Para Android o iOS
-        }, false);
     </script>
 </body>
 </html>
-
