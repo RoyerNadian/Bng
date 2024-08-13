@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">    
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE-edge">
-            <meta name="viewport" content="width=device=with, initial-scale=1.0">
-            <style>
-                #webApp_container{
-                   width:100%;
-                   height: 100vh;
-                   border:none
-                }
-            </style>
-            <title>Document</title>
-        </head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #webApp_container {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
 <body>
-<iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec" ></iframe>
+    <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec"></iframe>
+    <script>
+        // Cambiar el color de la barra de direcciones en dispositivos móviles
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#9f6efe');
+        });
+    </script>
 </body>
 </html>
