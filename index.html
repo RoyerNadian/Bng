@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Indira</title>
     <meta name="theme-color" content="#5a30e5">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -13,7 +14,7 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
         }
         #webApp_container {
             width: 100%;
@@ -21,29 +22,31 @@
             border: none;
             display: block;
         }
-        /* Estilo de la barra lateral */
         .sidebar {
             height: 100%;
             width: 0;
             position: fixed;
-            z-index: 1;
+            z-index: 1000;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #2c3e50;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
         .sidebar a {
-            padding: 8px 8px 8px 32px;
+            padding: 15px 25px;
             text-decoration: none;
-            font-size: 25px;
-            color: #818181;
+            font-size: 18px;
+            color: #ecf0f1;
             display: block;
             transition: 0.3s;
+            border-bottom: 1px solid #34495e;
         }
         .sidebar a:hover {
-            color: #f1f1f1;
+            background-color: #34495e;
+            color: #3498db;
         }
         .sidebar .closebtn {
             position: absolute;
@@ -51,6 +54,7 @@
             right: 25px;
             font-size: 36px;
             margin-left: 50px;
+            color: #ecf0f1;
         }
         #menuBtn {
             font-size: 30px;
@@ -58,64 +62,73 @@
             position: fixed;
             top: 15px;
             left: 15px;
-            z-index: 2;
+            z-index: 1001;
             color: #5a30e5;
+            background-color: rgba(255,255,255,0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
         #menuBtn:hover {
             color: #3b1f99;
         }
         .sidebar-header {
             text-align: center;
-            padding: 10px;
-            color: white;
+            padding: 20px 10px;
+            background-color: #1a2533;
         }
         .sidebar-header img {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
         }
         .sidebar-header h2 {
-            margin: 10px 0;
-            font-size: 20px;
+            margin: 15px 0 5px;
+            font-size: 24px;
+            color: #ecf0f1;
+        }
+        @media screen and (max-width: 600px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+            .sidebar a {
+                font-size: 16px;
+            }
+            .sidebar-header img {
+                width: 60px;
+                height: 60px;
+            }
+            .sidebar-header h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div id="menuBtn" onclick="openNav()">&#9776; Menu</div>
-
+    <div id="menuBtn" onclick="openNav()"><i class="fas fa-bars"></i></div>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="sidebar-header">
             <img src="https://example.com/favicon.png" alt="Favicon">
             <h2>The Best Bingo</h2>
         </div>
-        <a href="#" onclick="openIframe('https://script.google.com/macros/s/AKfycbysalhDaQwFe0C8XhqIXgUq7CCChYvPnzD-RAVmCWTB_InwsggEY7F8k9HrEh4t92gQ/exec')">Tabla & Bingos</a>
+        <a href="#" onclick="openIframe('https://script.google.com/macros/s/AKfycbysalhDaQwFe0C8XhqIXgUq7CCChYvPnzD-RAVmCWTB_InwsggEY7F8k9HrEh4t92gQ/exec')"><i class="fas fa-table"></i> Tabla & Bingos</a>
     </div>
-
     <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycbwrVtLei5qkYDCRz635BpXQa9FBJLYlOur4oFIt1ufrzH84JJt0r6pmPy2BosWvfPjG4Q/exec"></iframe>
-
     <script>
-        // Función para abrir la barra lateral
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
         }
-
-        // Función para cerrar la barra lateral
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
         }
-
-        // Función para cambiar el iframe
         function openIframe(url) {
             document.getElementById('webApp_container').src = url;
             closeNav();
         }
-
-        // Cambiar el color de la barra de direcciones en dispositivos móviles
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
         });
     </script>
-
 </body>
 </html>
