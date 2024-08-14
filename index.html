@@ -54,6 +54,11 @@
         .sidebar a:hover {
             background-color: rgba(124, 58, 237, 0.8);
         }
+        .sidebar a.active {
+            background-color: #7C3AED;
+            pointer-events: none;
+            cursor: default;
+        }
         .sidebar .closebtn {
             position: absolute;
             top: 10px;
@@ -133,8 +138,8 @@
             <img src="https://cdn-icons-png.flaticon.com/128/10040/10040785.png" alt="Bingo Indira Logo">
             <h2>Bingo Indira</h2>
         </div>
-         <a href="#" onclick="openIframe('https://script.google.com/macros/s/AKfycbzatDEQG4orrY7L4wnd2ISAUdgWaebfy1mObFO-eUtyIoAVSmsXUJ9b_iO6gagF5hKR/exec')"><i class="fas fa-table"></i> Tabla & Bingos</a>
-        <a href="#" onclick="goBackAndClose()"><i class="fas fa-file-alt"></i> Formulario</a>
+        <a href="#" id="tablaLink" class="active" onclick="openIframe('https://script.google.com/macros/s/AKfycbzatDEQG4orrY7L4wnd2ISAUdgWaebfy1mObFO-eUtyIoAVSmsXUJ9b_iO6gagF5hKR/exec', 'tablaLink')"><i class="fas fa-table"></i> Tabla & Bingos</a>
+        <a href="#" id="formularioLink" onclick="openIframe('https://script.google.com/macros/s/AKfycby_IcC4ZhJBI6tiv9_iOsx561FcUxLVFIbYR75uJKMTGbJSxCWjO1cwMvG6SpcutM4uzw/exec', 'formularioLink')"><i class="fas fa-file-alt"></i> Formulario</a>
     </div>
     <iframe id="webApp_container" src="https://script.google.com/macros/s/AKfycby_IcC4ZhJBI6tiv9_iOsx561FcUxLVFIbYR75uJKMTGbJSxCWjO1cwMvG6SpcutM4uzw/exec"></iframe>
     <script>
@@ -150,13 +155,15 @@
             document.getElementById("menuBtn").innerHTML = '<i class="fas fa-chevron-right"></i>';
             document.getElementById("menuBtn").onclick = openNav;
         }
-        function openIframe(url) {
+        function openIframe(url, activeLinkId) {
             document.getElementById('webApp_container').src = url;
             closeNav();
+            setActiveLink(activeLinkId);
         }
-        function goBackAndClose() {
-            window.history.back();
-            closeNav();
+        function setActiveLink(activeLinkId) {
+            document.getElementById('tablaLink').classList.remove('active');
+            document.getElementById('formularioLink').classList.remove('active');
+            document.getElementById(activeLinkId).classList.add('active');
         }
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', '#5a30e5');
